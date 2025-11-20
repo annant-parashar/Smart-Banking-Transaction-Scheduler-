@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/app.js"></script>
+</head>
+
+<body class="neo-body" onload="loadAdminDashboard()">
+
+    <!-- Top Navbar -->
+    <header class="neo-nav">
+        <div class="nav-left">
+            <div class="nav-logo-circle"></div>
+            <span class="nav-title">Smart Banking – Admin Panel</span>
+        </div>
+
+        <nav class="nav-right">
+            <a href="/" class="nav-link">Home</a>
+            <a class="nav-link active">Admin</a>
+            <button class="nav-link nav-btn" onclick="logout()">Logout</button>
+        </nav>
+    </header>
+
+    <main class="neo-main">
+
+        <!-- ========================================================= -->
+        <!-- PENDING TRANSACTION TABLE -->
+        <!-- ========================================================= -->
+        <section class="neo-card">
+            <h2>Pending Transactions</h2>
+            <p class="muted-text">Fraud-marked transactions appear in red.</p>
+
+            <div class="table-wrapper">
+                <table id="adminPending" class="neo-table">
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Customer ID</th>
+                            <th>Account</th>
+                            <th>Transaction Type</th>
+                            <th>Amount</th>
+                            <th>Arrival Time (Real)</th>
+                            <th>Window Allotted</th>
+                            <th>Status</th>
+                            <th>Unfreeze</th>
+                            <th>Reject</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- SIMULATION PANEL -->
+        <!-- ========================================================= -->
+        <section class="neo-card">
+            <h2>Scheduling Simulation</h2>
+
+            <div class="grid-3">
+                <!-- Manual -->
+                <div>
+                    <h3>Manual Simulation</h3>
+
+                    <label for="algoSelect">Select Algorithm</label>
+                    <select id="algoSelect" class="neo-input">
+                        <option>FCFS</option>
+                        <option>SJF-P</option>
+                        <option>PRIORITY-P</option>
+                        <option>RR</option>
+                        <option>MLQ</option>
+                        <option>MLFQ</option>
+                    </select>
+
+                    <button class="neo-btn primary full" onclick="simulateManual()">
+                        Run Manual Simulation
+                    </button>
+
+                    <p id="simulationInfo" class="muted-text"></p>
+                </div>
+
+                <!-- Auto -->
+                <div>
+                    <h3>Auto Mode</h3>
+
+                    <button class="neo-btn secondary full" onclick="simulateAuto()">
+                        Run Auto (Choose Best Algo)
+                    </button>
+
+                    <button class="neo-btn success full" onclick="commitAuto()">
+                        Apply Auto Result
+                    </button>
+
+                    <p id="autoInfo" class="muted-text"></p>
+                </div>
+
+                <!-- Type-Based -->
+                <div>
+                    <h3>Type-Based Algorithm</h3>
+
+                    <button class="neo-btn warning full" onclick="simulateAssigned()">
+                        Run Type-Based Simulation
+                    </button>
+                </div>
+            </div>
+
+         
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- GENERAL SCHEDULE RESULT (MANUAL + TYPE-BASED) -->
+        <!-- ========================================================= -->
+        <section class="neo-card">
+            <h2>Schedule Result (Manual or Type-Based)</h2>
+
+            <h3>Result Table</h3>
+            <div class="table-wrapper">
+                <table id="resultTable" class="neo-table">
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Type</th>
+                            <th>Arrival</th>
+                            <th>Window Allotted</th>
+                            <th>Completion Time</th>
+                            <th>Turn Around Time</th>
+                            <th>Waiting Time</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top:24px;">Gantt Chart</h3>
+            <div id="ganttContainer" class="gantt-container"></div>
+        </section>
+
+    </main>
+
+</body>
+</html>

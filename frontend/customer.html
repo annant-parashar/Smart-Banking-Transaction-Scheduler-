@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/app.js"></script>
+</head>
+
+<body class="neo-body" onload="loadCustomerDashboard()">
+
+<header class="neo-nav">
+    <div class="nav-left">
+        <div class="nav-logo-circle"></div>
+        <span class="nav-title">Smart Banking System</span>
+    </div>
+
+    <nav class="nav-right">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/customer" class="nav-link active">Customer</a>
+        <button class="nav-link nav-btn" onclick="logout()">Logout</button>
+    </nav>
+</header>
+
+
+<main class="neo-main">
+
+    <section class="neo-card">
+        <h2>Account Summary</h2>
+        <p id="customerInfo"></p>
+    </section>
+
+
+    <!-- Create transaction -->
+    <section class="neo-card">
+        <h2>Make a Transaction</h2>
+
+        <select id="txType" class="neo-input">
+            <option>UPI</option>
+            <option>ATM</option>
+            <option>NEFT</option>
+            <option>EMI</option>
+            <option>CHEQUE</option>
+            <option>RTGS</option>
+        </select>
+
+        <select id="txDirection" class="neo-input">
+            <option>DEBIT</option>
+            <option>CREDIT</option>
+        </select>
+
+        <input id="txAmount" class="neo-input" placeholder="Amount">
+
+        <button class="neo-btn primary full" onclick="createTransaction()">Submit</button>
+    </section>
+
+
+    <!-- Pending -->
+    <section class="neo-card">
+        <h2>Pending Transactions</h2>
+        <table id="pendingTable" class="neo-table">
+            <thead>
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Real-Time Arrival</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+
+    <!-- Completed -->
+    <section class="neo-card">
+        <h2>Completed Transactions</h2>
+        <table id="processedTable" class="neo-table">
+            <thead>
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Completion Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+</main>
+
+</body>
+</html>
