@@ -1,0 +1,16 @@
+[
+  {
+    "account": "ACC1001",
+    "customerId": 2,
+    "balance": 8869327.0,
+    "txCount": 5,
+    "status": "ACTIVE"
+  },
+  {
+    "account": "ACC1002",
+    "customerId": 3,
+    "balance": 108700.0,
+    "txCount": 2,
+    "status": "ACTIVE"
+  }
+]
